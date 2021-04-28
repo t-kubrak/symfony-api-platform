@@ -30,6 +30,8 @@ class CheeseListing
     private $description;
 
     /**
+     * The price in cents.
+     *
      * @ORM\Column(type="integer")
      */
     private $price;
