@@ -12,6 +12,7 @@ use Carbon\Carbon;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Serializer\Annotation\SerializedName;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ApiResource(
@@ -45,12 +46,19 @@ class CheeseListing
     /**
      * @Groups({"cheese_listing:read", "cheese_listing:write"})
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *     min=2,
+     *     max=50,
+     *     maxMessage="Describe your cheese in 50 chars or less"
+     * )
      */
     private $title;
 
     /**
      * @Groups({"cheese_listing:read"})
      * @ORM\Column(type="text")
+     * @Assert\NotBlank()
      */
     private $description;
 
@@ -59,6 +67,7 @@ class CheeseListing
      *
      * @Groups({"cheese_listing:read", "cheese_listing:write"})
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank()
      */
     private $price;
 
