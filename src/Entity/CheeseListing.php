@@ -87,6 +87,7 @@ class CheeseListing
      * @Groups({"cheese_listing:read", "cheese_listing:write"})
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="cheeseListings")
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\Valid()
      */
     private $owner;
 
